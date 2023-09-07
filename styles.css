@@ -15,13 +15,14 @@ body {
     background-color: #ffffff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+    max-width: 600px; /* Adjust the maximum width as needed */
+    width: 90%; /* Add some margin on smaller screens */
 }
 
 .container img {
     width: 150px;
     height: 150px;
     border: 3px solid lightgrey;
-
     border-radius: 50%;
 }
 
@@ -32,13 +33,14 @@ body {
 
 .date-time {
     display: flex;
-    justify-content: center;
+    flex-direction: column; /* Stack elements on smaller screens */
+    align-items: center; /* Center elements horizontally */
     margin: 20px 0;
 }
 
 .date-time .day,
 .date-time .time {
-    margin: 0 20px;
+    margin: 10px 0; /* Add space between elements */
 }
 
 .date-time p {
@@ -60,4 +62,17 @@ body {
 
 .track a:hover {
     text-decoration: underline;
+}
+
+/* Media query for screens smaller than 600px */
+@media (max-width: 600px) {
+    .container img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .date-time .day,
+    .date-time .time {
+        margin: 5px 0;
+    }
 }
