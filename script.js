@@ -14,6 +14,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const formattedUTCTime = `${hours}:${minutes}:${seconds}.${milliseconds}`;
 
     // Update the elements with the specified data-testid attributes
-    document.querySelector('[data-testid="currentDayOfTheWeek"]').textContent = `Current Day of the Week: ${currentDayOfWeek}`;
-    document.querySelector('[data-testid="currentUTCTime"]').textContent = `Current UTC Time: ${formattedUTCTime}`;
+    document.querySelector('[data-testid="currentDayOfTheWeek"]').textContent = `${currentDayOfWeek}`;
+    document.querySelector('[data-testid="currentUTCTime"]').textContent = `${formattedUTCTime}`;
 });
