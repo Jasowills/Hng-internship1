@@ -1,19 +1,24 @@
-document.addEventListener("DOMContentLoaded", function () {
-    // Get the current date and time in UTC
+function setDayOfWeek() {
+    const dayOfWeekElement = document.querySelector('[data-testid="currentDayOfTheWeek"]');
     const currentDate = new Date();
-    
-    // Get the current day of the week (e.g., Monday, Tuesday)
-    const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    const currentDayOfWeek = daysOfWeek[currentDate.getUTCDay()];
+    const options = { weekday: 'long' };
+    const formattedDayOfWeek = currentDate.toLocaleDateString(undefined, options);
+    dayOfWeekElement.textContent = formattedDayOfWeek;
+}
 
-    // Format the UTC time as "HH:mm:ss"
-    const hours = String(currentDate.getUTCHours()).padStart(2, '0');
-    const minutes = String(currentDate.getUTCMinutes()).padStart(2, '0');
-    const seconds = String(currentDate.getUTCSeconds()).padStart(2, '0');
-    const milliseconds = String(currentDate.getUTCMilliseconds()).padStart(3, '0');
-    const formattedUTCTime = `${hours}:${minutes}:${seconds}.${milliseconds}`;
+function updateClock() {
+    const timeElement = document.querySelector('[data-testid="currentUTCTime"]');
+    const updateClockDisplay = () => {
+        const currentDate = new Date();
+        const options = { hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' };
+        const formattedTime = currentDate.toLocaleTimeString(undefined, options);
+        timeElement.textContent = formattedTime;
+    };
 
-    // Update the elements with the specified data-testid attributes
-    document.querySelector('[data-testid="currentDayOfTheWeek"]').textContent = `${currentDayOfWeek}`;
-    document.querySelector('[data-testid="currentUTCTime"]').textContent = `${formattedUTCTime}`;
-});
+    updateClockDisplay();
+
+    setInterval(updateClockDisplay, 1000);
+}
+
+setDayOfWeek();
+updateClock();
